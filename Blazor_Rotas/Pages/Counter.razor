@@ -1,0 +1,31 @@
+﻿@page "/counter"
+@page "/counter/{incremento:int}"
+@page "/counter/{texto}"
+@page "/counter/{incremento:int}/{texto}"
+
+<h1>Counter</h1>
+
+<a class="btn btn-info" href="/">Atalho para index</a>
+
+<p>Current count: @currentCount</p>
+
+<h2>@Texto</h2>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    [Parameter]
+    public int Incremento { get; set; }
+
+    [Parameter]
+    public string Texto { get; set; } = "Blazor";
+
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        Texto = Texto ?? "Blazor é incrivel";
+        currentCount++;
+        currentCount = currentCount + Incremento;
+    }
+}
