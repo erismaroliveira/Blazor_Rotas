@@ -1,0 +1,50 @@
+﻿@page "/navegador"
+@inject NavigationManager navigation
+
+<h1>Usando Navigation Manager</h1>
+
+<button @onclick="Navegar1">Navegar para erismaroliveira.github.io</button>
+<br />
+<button @onclick="Navegar2">Navegar para Counter</button>
+<br />
+<button @onclick="Navegar3">Voltar para Home</button>
+<br />
+<button @onclick="ValorUri">Uri</button>
+<label>@URI</label>
+<br />
+<button @onclick="ValorBaseUri">BaseUri</button>
+<label>@BaseURI</label>
+<br />
+
+@code {
+    [Parameter]
+    public string URI { get; set; }
+
+    [Parameter]
+    public string BaseURI { get; set; }
+
+    public void Navegar1()
+    {
+        navigation.NavigateTo("https://erismaroliveira.github.io");
+    }
+
+    public void Navegar2()
+    {
+        navigation.NavigateTo("/counter");
+    }
+
+    public void Navegar3()
+    {
+        navigation.NavigateTo("/");
+    }
+
+    public void ValorUri()
+    {
+        URI = navigation.Uri.ToString();
+    }
+
+    public void ValorBaseUri()
+    {
+        BaseURI = navigation.BaseUri.ToString();
+    }
+}
